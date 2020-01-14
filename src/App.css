@@ -1,38 +1,110 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  background-size: cover;
+  background-color: black;
 }
 
-.App-link {
-  color: #61dafb;
+.radar {
+  height: 600px;
+  width: 1200px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background-color: #000;
+  border: 20px solid #f7f7f7;
+  border-top-left-radius: 1200px;
+  border-top-right-radius: 1200px;
+  box-shadow: 0 8px 0 #c5c5c5, inset 0 0 100px rgba(0, 255, 0, .5);
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.radar li:nth-child(1),
+.radar li:nth-child(2),
+.radar li:nth-child(3),
+.radar li:nth-child(4) {
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  background-color: rgba(0, 255, 0, 1);
+  border-radius: 50%;
+  list-style: none;
+}
+
+.radar li:nth-child(1) {
+  transform: rotate(45deg) translate(-50%, -50%);
+}
+
+.radar li:nth-child(2) {
+  transform: rotate(90deg) translate(-50%, -50%);
+}
+
+.radar li:nth-child(3) {
+  transform: rotate(135deg) translate(-50%, -50%);
+}
+
+.radar li:nth-child(5),
+.radar li:nth-child(6),
+.radar li:nth-child(7) {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: 1px solid rgba(0, 255, 0, 1);
+  border-radius: 50%;
+}
+
+.radar li:nth-child(5) {
+  height: 300px;
+  width: 300px;
+}
+.radar li:nth-child(6) {
+  height: 600px;
+  width: 600px;
+}
+
+.radar li:nth-child(7) {
+  height: 900px;
+  width: 900px;
+}
+
+.radar li:nth-child(8) {
+  height: 600px;
+  width: 600px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform-origin: top left;
+  background: linear-gradient(45deg, #00ff00 0%, transparent 50%);
+  animation: animate 2.5s linear infinite;
+  list-style: none;
+}
+
+@keyframes animate {
+  0% {
+      transform: rotate(70deg);
   }
-  to {
-    transform: rotate(360deg);
+
+  100% {
+      transform: rotate(310deg);
   }
+}
+
+.point {
+  position: absolute;
+  color: red;
+  background: red;
+  font-size: 50px;
+  bottom: 0;
+  left: 50%;
+  transform: translateY(50%);
+  list-style: none;
+  height: 1px;
+  display: flex;
 }

@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import * as React from 'react';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			data: []
+		};
+	}
+
+  async componentDidMount() {
+			let r = await fetch('/test');
+			let res = await r.json();
+			this.setState({ data: res.users });
+	}
+
+	render() {
+		return (
+			<main className="container my-5">
+				<ul className="radar">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					{this.state.data.map(item => {
+						const style = {
+							bottom: `${(item.Distance*70/410)+58}px`,
+							left: `${item.Angle*600/90}px`
+						}
+						return <li className="point" style={style} key={item.id}>.</li>
+					})}
+        		</ul>
+			</main>
+		);
+	}
 }
 
 export default App;
